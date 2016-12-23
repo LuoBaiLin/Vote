@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.dbqn.Vote.entity.VoteSubject" table="VOTE_SUBJECT" schema="A_OE">
+        <id name="vsId" type="java.lang.Integer" column="VS_ID">
+             <generator class="sequence">
+				<param name="sequence">vote3</param>
+			</generator>
+        </id>
+        <property name="vsTitle" type="java.lang.String">
+            <column name="VS_TITLE" length="50" not-null="true">
+                <comment>投票内容</comment>
+            </column>
+        </property>
+        <property name="vsType" type="java.lang.Integer">
+            <column name="VS_TYPE" precision="22" scale="0" not-null="true">
+                <comment>投票类型</comment>
+            </column>
+        </property>
+        <set name="voteItems" inverse="true">
+            <key>
+                <column name="VS_ID" precision="22" scale="0">
+                    <comment>投票内容id</comment>
+                </column>
+            </key>
+            <one-to-many class="cn.dbqn.Vote.entity.VoteItem" />
+        </set>
+        <set name="voteOptions" inverse="true" cascade="save-update">
+            <key>
+                <column name="VS_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="cn.dbqn.Vote.entity.VoteOption" />
+        </set>
+    </class>
+</hibernate-mapping>

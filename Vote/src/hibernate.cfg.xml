@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+	
+		<property name="dialect">
+			org.hibernate.dialect.Oracle9Dialect
+		</property>
+		<property name="connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:orcldb
+		</property>
+		<property name="connection.username">A_oe</property>
+		<property name="connection.password">pwd</property>
+		<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+		
+		<property name="myeclipse.connection.profile">myorcl</property>
+		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+		
+		<mapping resource="cn/dbqn/Vote/entity/VoteUser.hbm.xml" />
+		<mapping resource="cn/dbqn/Vote/entity/VoteOption.hbm.xml" />
+		<mapping resource="cn/dbqn/Vote/entity/VoteSubject.hbm.xml" />
+		<mapping resource="cn/dbqn/Vote/entity/VoteItem.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

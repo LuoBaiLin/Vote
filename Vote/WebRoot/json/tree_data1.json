@@ -1,0 +1,31 @@
+[{
+	"id":1,
+	"text":"功能菜单",
+	"children":[{
+		"id":11,
+		"text":"用户管理",
+		"children":[{
+			"id":111,
+			"text":"个人信息"
+		},{
+			"id":112,
+			"text":"投票记录"
+		}]
+	},{
+		"id":12,
+		"text":"投票管理",
+		"children":[{
+			"id":121,
+			"text":"维护",
+			"url":"index.jsp"
+		},{
+			"id":122,
+			"text":"发布新投票",
+			"url":"index.jsp"
+		},{
+			"id":123,
+			"text":"投票列表",
+			"url":"index.jsp"
+		}]
+	}]
+}]
