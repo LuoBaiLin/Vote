@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.dbqn.Vote.entity.VoteUser" table="VOTE_USER" schema="A_OE">
+        <id name="vuUserId" type="java.lang.Integer" column="VU_USER_ID">
+             <generator class="sequence">
+				<param name="sequence">vote4</param>
+			</generator>
+        </id>
+        <property name="vuUserName" type="java.lang.String">
+            <column name="VU_USER_NAME" length="20" not-null="true">
+                <comment>用户名</comment>
+            </column>
+        </property>
+        <property name="vuUserPassword" type="java.lang.String">
+            <column name="VU_USER_PASSWORD" length="20" not-null="true">
+                <comment>用户密码</comment>
+            </column>
+        </property>
+        <set name="voteItems" inverse="true">
+            <key>
+                <column name="VU_USER_ID" precision="22" scale="0">
+                    <comment>用户id</comment>
+                </column>
+            </key>
+            <one-to-many class="cn.dbqn.Vote.entity.VoteItem" />
+        </set>
+    </class>
+    <query name="HQLUserLogin">
+		<![CDATA[
+			from VoteUser as user where user.vuUserName = ? and user.vuUserPassword = ?
+		]]>
+    </query> 
+</hibernate-mapping>
