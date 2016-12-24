@@ -17,15 +17,21 @@
 		"children":[{
 			"id":121,
 			"text":"维护",
-			"url":"index.jsp"
+			"attributes":{  
+				"url":"index.jsp"
+			}
 		},{
 			"id":122,
 			"text":"发布新投票",
-			"url":"index.jsp"
+			"attributes":{ 
+				"url":"index.jsp"
+			}
 		},{
 			"id":123,
 			"text":"投票列表",
-			"url":"index.jsp"
+			"attributes":{ 
+				"url":"index.jsp"
+			}
 		}]
 	}]
 }]

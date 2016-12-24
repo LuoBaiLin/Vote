@@ -6,16 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
-import cn.dbqn.Vote.dao.VoteItemDao;
 import cn.dbqn.Vote.dao.VoteOptionDao;
 import cn.dbqn.Vote.dao.VoteSubjectDao;
-import cn.dbqn.Vote.dao.impl.VoteItemDaoImpl;
 import cn.dbqn.Vote.dao.impl.VoteOptionDaoImpl;
 import cn.dbqn.Vote.dao.impl.VoteSubjectDaoImpl;
-import cn.dbqn.Vote.entity.VoteItem;
 import cn.dbqn.Vote.entity.VoteOption;
 import cn.dbqn.Vote.entity.VoteSubject;
-import cn.dbqn.Vote.entity.VoteUser;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,12 +20,8 @@ public class UpdateVoteAction extends ActionSupport{
 	private int optionType;
 	private String[] options;
 	
-	private VoteItem voteitem;
 	private VoteOption voteoptions;
-	private VoteSubject votesubject;
-	private VoteUser voteuser;
-	
-	private VoteItemDao itemdao=new VoteItemDaoImpl();
+	private VoteSubject votesubjects;
 	private VoteOptionDao optiondao=new VoteOptionDaoImpl();
 	private VoteSubjectDao subjectdao=new VoteSubjectDaoImpl();
 	
@@ -38,17 +30,16 @@ public class UpdateVoteAction extends ActionSupport{
 		//添加投票选项（循环）(option)
 		//添加投票取值（item）
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		voteitem=new VoteItem();
 		voteoptions=new VoteOption();
-		votesubject=new VoteSubject();
-		voteuser=(VoteUser) session.getAttribute("userLogin");
+		votesubjects=new VoteSubject();
+		VoteSubject subject=(VoteSubject) session.getAttribute("subject");
 		List<VoteOption> option=(List<VoteOption>) session.getAttribute("option");
 		
 		//添加投票内容(subject)
-		votesubject.setVsTitle(subjects);
-		votesubject.setVsType(optionType);
-		int result1=subjectdao.updateSubject(votesubject);
-		System.out.println(result1);
+		votesubjects.setVsId(subject.getVsId());
+		votesubjects.setVsTitle(subjects);
+		votesubjects.setVsType(optionType);
+		int result1=subjectdao.updateSubject(votesubjects);
 		
 		int result=0;
 		for(int i=0;i<options.length;i++){
@@ -58,7 +49,7 @@ public class UpdateVoteAction extends ActionSupport{
 				result=optiondao.updateOption(voteoptions);
 			}else{
 				voteoptions.setVoOption(options[i]);
-				voteoptions.setVoteSubject(votesubject);
+				voteoptions.setVoteSubject(subject);
 				result=optiondao.addOption(voteoptions);
 			}
 		}

@@ -28,7 +28,6 @@ public class VotingAction extends ActionSupport{
 		VoteSubject subject=subjectdao.selectById(subid);
 		VoteOptionDao optiondao=new VoteOptionDaoImpl();
 		List<VoteOption> option=optiondao.selectBySubsId(subid);
-		
 		VoteItemDao voteitemdao=new VoteItemDaoImpl();
 		List<VoteItem> voteitem=voteitemdao.selectBySubId(subid);
 		List<Integer> Nums=new ArrayList<Integer>();

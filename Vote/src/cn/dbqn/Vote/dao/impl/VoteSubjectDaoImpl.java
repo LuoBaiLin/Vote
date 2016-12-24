@@ -104,7 +104,7 @@ public class VoteSubjectDaoImpl implements VoteSubjectDao{
 			session = hibernateUtil.currentSession();
 			//开启事务
 			tx = session.beginTransaction();
-			session.update(subject);
+			session.saveOrUpdate(subject);
 			//提交事务
 			tx.commit();
 			return 1;

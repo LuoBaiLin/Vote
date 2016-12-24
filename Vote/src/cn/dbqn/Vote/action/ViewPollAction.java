@@ -1,5 +1,6 @@
 package cn.dbqn.Vote.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,11 +30,19 @@ public class ViewPollAction extends ActionSupport{
 		List<VoteOption> option=optiondao.selectBySubsId(subid);
 		VoteItemDao voteitemdao=new VoteItemDaoImpl();
 		List<VoteItem> voteitem=voteitemdao.selectBySubId(subid);
+		List<Integer> Nums=new ArrayList<Integer>();
+		for (int i = 0; i < option.size(); i++) {
+			int result=voteitemdao.selectByoptionId(option.get(i).getVoId()).size();
+			Nums.add(result);
+		}
 		
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		session.setAttribute("subject", subject);
+		session.setAttribute("nums", Nums);
 		session.setAttribute("option", option);
+		session.setAttribute("subject", subject);
 		session.setAttribute("voteitem",voteitem);
+		session.setAttribute("options", option.size());
+		session.setAttribute("voteitems", voteitem.size());
 		return SUCCESS;
 	}
 	public int getSubid() {

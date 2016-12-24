@@ -140,7 +140,7 @@ public class VoteOptionDaoImpl  implements VoteOptionDao{
 			session = hibernateUtil.currentSession();
 			//开启事务
 			tx = session.beginTransaction();
-			session.update(option);
+			session.saveOrUpdate(option);
 			//提交事务
 			tx.commit();
 			return 1;

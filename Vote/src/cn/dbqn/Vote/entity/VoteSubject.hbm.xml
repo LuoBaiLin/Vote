@@ -9,7 +9,7 @@
 				<param name="sequence">vote3</param>
 			</generator>
         </id>
-        <property name="vsTitle" type="java.lang.String">
+        <property name="vsTitle" type="java.lang.String" >
             <column name="VS_TITLE" length="50" not-null="true">
                 <comment>投票内容</comment>
             </column>
@@ -27,7 +27,7 @@
             </key>
             <one-to-many class="cn.dbqn.Vote.entity.VoteItem" />
         </set>
-        <set name="voteOptions" inverse="true" cascade="save-update">
+        <set name="voteOptions" inverse="true">
             <key>
                 <column name="VS_ID" precision="22" scale="0" />
             </key>
