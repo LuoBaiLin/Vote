@@ -30,8 +30,8 @@ public class UpdateVoteAction extends ActionSupport{
 		//添加投票选项（循环）(option)
 		//添加投票取值（item）
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		voteoptions=new VoteOption();
 		votesubjects=new VoteSubject();
+		voteoptions=new VoteOption();
 		VoteSubject subject=(VoteSubject) session.getAttribute("subject");
 		List<VoteOption> option=(List<VoteOption>) session.getAttribute("option");
 		
@@ -48,9 +48,10 @@ public class UpdateVoteAction extends ActionSupport{
 				voteoptions.setVoOption(options[i]);
 				result=optiondao.updateOption(voteoptions);
 			}else{
-				voteoptions.setVoOption(options[i]);
-				voteoptions.setVoteSubject(subject);
-				result=optiondao.addOption(voteoptions);
+				VoteOption option1=new VoteOption();
+				option1.setVoOption(options[i]);
+				option1.setVoteSubject(subject);
+				result=optiondao.addOption(option1);
 			}
 		}
 		if(result==1){

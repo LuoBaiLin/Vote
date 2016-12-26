@@ -54,9 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 </thead>
 			 </table>
 			  <%--工具栏--%>			 
-			   <%-- <div id="toolbar">
-			 	<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">tianj</a>
-				 </div> --%>
+			   <div id="toolbar" style="width:700px;background-color:#dcdbfd;">
+			   		<div style="position:relative;left:500px;">
+			   			<input type="text" class="easyui-textbox"/><input type="button" class="easyui-linkbutton" value="查询" />
+					</div>
+				</div>
 		 </div>
 		<div title="发布新投票" data-options="tabWidth:112"  style="padding:20px;">
 			 <div id="aa" class="easyui-accordion" style="width:700px;height:400px;margin-left:30px;">

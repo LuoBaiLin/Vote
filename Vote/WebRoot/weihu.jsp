@@ -54,12 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function operateFormatter(value,row,index){
 		return '<a href="ViewPoll.action?subid='+value+'" target="_top" style="color:blue">维护</a>';
 	}
-	function itemClick(val){
-		alert("单元格值："+val);
-	}
-  	function add(){
-  		alert("add''");
-  	}
   	function participantsStyler(value,row,index){
   		if(value<5){
   			return "background-color:#ffee00;color:red";

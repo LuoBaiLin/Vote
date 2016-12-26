@@ -26,9 +26,7 @@ public class FabuAction extends ActionSupport{
 	private VoteItem voteitem;
 	private VoteOption voteoptions;
 	private VoteSubject votesubject;
-	private VoteUser voteuser;
 	
-	private VoteItemDao itemdao=new VoteItemDaoImpl();
 	private VoteOptionDao optiondao=new VoteOptionDaoImpl();
 	private VoteSubjectDao subjectdao=new VoteSubjectDaoImpl();
 	@Override
@@ -39,17 +37,17 @@ public class FabuAction extends ActionSupport{
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		
 		voteitem=new VoteItem();
-		voteoptions=new VoteOption();
 		votesubject=new VoteSubject();
 		
-		voteuser=(VoteUser) session.getAttribute("userLogin");
 		//添加投票内容(subject)
 		votesubject.setVsTitle(votecontent);
 		votesubject.setVsType(xuan);
 		int result1=subjectdao.addSubject(votesubject);
+		
 		int result=0;
 		for(int i=0;i<voteoption.length;i++){
-			////添加投票选项（循环）(option)
+			//添加投票选项（循环）(option)
+				voteoptions=new VoteOption();
 				voteoptions.setVoOption(voteoption[i]);
 				voteoptions.setVoteSubject(votesubject);
 				result=optiondao.addOption(voteoptions);

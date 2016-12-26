@@ -18,7 +18,7 @@
 			"id":121,
 			"text":"维护",
 			"attributes":{  
-				"url":"index.jsp"
+				"url":"login.jsp"
 			}
 		},{
 			"id":122,

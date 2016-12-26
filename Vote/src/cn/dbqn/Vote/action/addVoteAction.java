@@ -24,12 +24,13 @@ public class addVoteAction  extends ActionSupport{
 	public String execute(){
 		
 		HttpSession session=ServletActionContext.getRequest().getSession();
+		int suid=(Integer) session.getAttribute("suid");
+		VoteUser voteuser=(VoteUser) session.getAttribute("userLogin");
+		VoteItemDao voteitemdao=new VoteItemDaoImpl();
 		int result=0;
 		for (int i = 0; i < options.length; i++) {
 			VoteOptionDao optiondao=new VoteOptionDaoImpl();
-			List<VoteOption> option=optiondao.selectByOptionName(options[i]);
-			VoteUser voteuser=(VoteUser) session.getAttribute("userLogin");
-			VoteItemDao voteitemdao=new VoteItemDaoImpl();
+			List<VoteOption> option=optiondao.selectBySubsId(suid);
 			VoteItem voteitem=new VoteItem();
 			voteitem.setVoteOption(option.get(i));
 			voteitem.setVoteSubject(option.get(i).getVoteSubject());

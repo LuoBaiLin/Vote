@@ -37,6 +37,7 @@ public class VotingAction extends ActionSupport{
 		}
 		
 		HttpSession session=ServletActionContext.getRequest().getSession();
+		session.setAttribute("suid",subid);
 		session.setAttribute("nums", Nums);
 		session.setAttribute("option", option);
 		session.setAttribute("subject", subject);
