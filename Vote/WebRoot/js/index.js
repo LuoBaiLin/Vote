@@ -9,6 +9,7 @@
   	function add(){
   		alert("add''");
   	}
+  	
 function myLoadFilter(data, parent){
 			var state = $.data(this, 'tree');
 			

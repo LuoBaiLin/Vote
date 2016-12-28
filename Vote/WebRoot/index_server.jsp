@@ -12,9 +12,7 @@
 //构造测试数据
 	VoteItemDao voteitem=new VoteItemDaoImpl();
 	VoteOptionDao voteoption=new VoteOptionDaoImpl();
-	VoteSubjectDao votesubject=new VoteSubjectDaoImpl();
 	
-	List<VoteItem> listitem=(List<VoteItem>)session.getAttribute("listitem");
 	List<VoteSubject> listsubject=(List<VoteSubject>)session.getAttribute("listsubject");
 	
 	//获取客户端传递的分页参数

@@ -41,4 +41,6 @@ public interface VoteSubjectDao {
 	 */
 	public int updateSubject(VoteSubject subject);
 	
+	public List<VoteSubject> selectByLikeName(String subjectName);
+	
 }

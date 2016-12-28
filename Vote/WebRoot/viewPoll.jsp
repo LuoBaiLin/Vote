@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="login_top" onclick="document.location='index.jsp'" ><img src="image/login_top.png" width="90px" height="50px"/><span>北大青鸟网上调查系统</span></div>
 	<div style="font-size: 16px;font-weight: bold;"><img src="image/large_chart.png"/><span style="position:relative;top:-10px;">&nbsp;查看投票</span></div>
 	<div style="width:500px;"><hr></div>
-	<div id="title"><img src="image/tablet.png"></img><label style="position:relative;top:-10px;">&nbsp;&nbsp;选出你心中最好的聊天工具</label></div>
+	<div id="title"><img src="image/tablet.png"></img><label style="position:relative;top:-10px;">&nbsp;&nbsp;<s:property value="#session.subject.vsTitle"/></label></div>
 	<div id="option_message">共有<s:property value="#session.options"/>个选项，已有<s:property value="#session.voteitems"/>个网友参与了投票</div><br><br>
 	<table>
 	<s:iterator value="#session.nums" id="nums"  status="st">

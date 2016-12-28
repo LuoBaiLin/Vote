@@ -25,6 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="jquery-easyui-1.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" charset="UTF-8">
+    	function likename(){
+	  		var title=$("#titlelike").val();
+	  		location.href="index.action?likeName="+title;
+  		}
+    </script>
   <body  style="background-color:#dcdbfd;">
  	 <div class="login_top"><img src="image/login_top.png" width="90px" height="50px"/><span>北大青鸟网上调查系统</span></div>
 	 <div style="margin:20px 0;"></div>
@@ -56,7 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <%--工具栏--%>			 
 			   <div id="toolbar" style="width:700px;background-color:#dcdbfd;">
 			   		<div style="position:relative;left:500px;">
-			   			<input type="text" class="easyui-textbox"/><input type="button" class="easyui-linkbutton" value="查询" />
+			   			<input type="text" name="titlelike" id="titlelike" class="easyui-textbox"/>
+			   			<input type="button" onclick="likename()" class="easyui-linkbutton" value="查询" />
 					</div>
 				</div>
 		 </div>

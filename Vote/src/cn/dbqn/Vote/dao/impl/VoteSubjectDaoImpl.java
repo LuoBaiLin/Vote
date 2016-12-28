@@ -114,4 +114,19 @@ public class VoteSubjectDaoImpl implements VoteSubjectDao{
 		}
 	}
 
+	@Override
+	public List<VoteSubject> selectByLikeName(String subjectName) {
+		Session session = null;
+		try {
+			//´ò¿ªsession
+			session = hibernateUtil.currentSession();
+			Query query = session.createQuery("FROM VoteSubject as su where su.vsTitle like '%"+subjectName+"%'");
+			List<VoteSubject> Subject = query.list();
+			return Subject;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }
